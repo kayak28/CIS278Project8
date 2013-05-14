@@ -51,8 +51,9 @@ int main()
 	{
 		cout << "input more int values:\n";
 	}
-	while(getchar())
+	while(getchar())//adter prompt segmentation error happens
 	{
+
 		charList.insert(getchar());
 		if(getchar() == '\n')
 		{
