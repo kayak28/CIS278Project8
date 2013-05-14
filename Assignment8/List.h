@@ -7,6 +7,8 @@ class List
 	public:
 		List();
 		List(int max);
+		int getSize();
+		int getMany();
 		bool isFull();
 		bool isEmpty();
 		void insert(T value);
@@ -14,7 +16,8 @@ class List
 		int occurs(T value);
 		void deleteAll(T value);
 		bool operator==(const List<T>& operand) const;
-		friend ostream& operator<<(ostream& out, const List<T>& robject);
+	//	friend ostream& operator<< <>(ostream& out, const List<T>& robject);
+		void display(ostream& out);
 	private:
 		T *data;
 		int howmany;
@@ -22,56 +25,62 @@ class List
 
 };
 template<class T>
-List::List()
+List<T>::List()
 {
 	data = new T[10];
 	howmany = 0;
 	size = 10;
 }
 template<class T>
-List::List(int max)
+List<T>::List(int max)
 {
+	cout << "creating a const";
 	data = new T [max];
 	howmany = 0;
 	size = max;
 }
 template<class T>
-int List::getSize()
+int List<T>::getSize()
 {
 	return size;
 }
 template<class T>
-int List::getMany()
+int List<T>::getMany()
 {
 	return howmany;
 }
 template<class T>
-bool List::isFull()
+bool List<T>::isFull()
 {
 	return (howmany == size);
 }
-bool List::isEmpty()
+template<class T>
+bool List<T>::isEmpty()
 {
 	return (howmany == 0);
 }
-void List::insert(T value)
+template<class T>
+void List<T>::insert(T value)
 {
 	if(isFull())
 	{
-		throw new ListException();
+		//throw new ListException();
 	}
 	data[howmany] = value;
 	howmany++;
 }
-T List::last()
+template<class T>
+T List<T>::last() const
 {
 	if(isEmpty())
 	{
-		throw new Exception();
+		//throw new Exception();
 	}
-	return data[howmany];
+	return data[howmany-1];
 }
-int List::occurs(T value)
+
+template<class T>
+int List<T>::occurs(T value)
 {
 	int occurence = 0;
 	for(int i = 0; i < size; i++)
@@ -83,7 +92,8 @@ int List::occurs(T value)
 	}
 	return occurence;
 }
-void List::deleteAll(T value)
+template<class T>
+void List<T>::deleteAll(T value)
 {
 	for(int i = 0; i < size; i++)
 	{
@@ -96,7 +106,8 @@ void List::deleteAll(T value)
 		}
 	}
 }
-bool operator ==(const List<T>& operand) const;
+template<class T>
+bool List<T>::operator ==(const List<T>& operand) const
 {
 	//bool idential = false;
 	if(this->getSize() == operand.getSize())
@@ -122,6 +133,7 @@ bool operator ==(const List<T>& operand) const;
 	}
 	return true;
 } 
+template<class T>
 ostream& operator << (ostream& out, const List<T>& robject)
 {
 	out << "[ ";

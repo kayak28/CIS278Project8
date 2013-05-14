@@ -1,6 +1,7 @@
 #include <iostream>
-#include "IntList.h"
+
 using namespace std; 
+#include "IntList.h"
 int main()
 {
 	IntList<int> mylist(2); //create array with int type with cap = 2

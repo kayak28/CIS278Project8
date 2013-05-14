@@ -21,8 +21,13 @@ class IntList
 		//Precond: at least one occurence of value is int he list
 		bool isThere(T value) const;
 		//determine id value' is in the list 
+		bool isEmpty() const;
+		//check if the list is empty
+		bool isFull() const;
+		//check if the list is full
 		void display(ostream& out);
 		//for output of IntList object to an ostream
+
 	private: 
 		T *storage; //storage for int value
 		int howmany; //number of int value currently stored
@@ -61,7 +66,7 @@ void IntList<T>::insert(T value)
 	storage[howmany++] = value;
 }
 template <class T>
-void IntList<T::deleteItem(T value)
+void IntList<T>::deleteItem(T value)
 {
 	int index = 0;//
 	while(storage[index] != value)
@@ -70,7 +75,7 @@ void IntList<T::deleteItem(T value)
  		index++;
 	}
 
-	for(int pos = index+1; pos <= howmnay -1; pos++ )
+	for(int pos = index+1; pos <= howmany -1; pos++ )
 	{
 		storage[pos - 1] = storage[pos];
 	}
@@ -85,6 +90,16 @@ bool IntList<T>::isThere(T value) const
 		index++;
 	}
 	return (index < howmany);
+}
+template<class T>
+bool IntList<T>::isEmpty() const
+{
+	return howmany == 0;
+}
+template<class T>
+bool IntList<T>::isFull() const
+{
+	return capacity == howmany;
 }
 template <class T>
 void IntList<T>::display(ostream& out)
