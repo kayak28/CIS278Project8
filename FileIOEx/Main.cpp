@@ -1,7 +1,10 @@
 //Main.cpp
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
+using std::ifstream;
+using std::ofstream;
 
 int main()
 {
@@ -13,10 +16,17 @@ int main()
 	cin >> fileName;
 
 	in.open(fileName.c_str());
+	cout << "after open file\n";
 	out.open("myfile2.txt",ios::app);
-	//in >> name;
-	getline(in, name);
-	out << name;
+	cout << "create myfile2\n";
+	
+	in >> name;
+	in.ignore(50, '\n');
+	cout << "after in\n";
+	std::getline(in, name);
+
+	cout << "after get lline\n";
+	//out << name;
 
 	in.close();
 	out.close();
