@@ -66,7 +66,7 @@ void List<T>::insert(T value)
 {
 	if(isFull())
 	{
-		cout << "Full array!\n";
+		throw "listException: list is Full\n";
 	}
 	data[howmany] = value;
 	howmany++;
@@ -76,7 +76,7 @@ T List<T>::last() const
 {
 	if(isEmpty())
 	{
-		//throw new Exception();
+		throw "List listException: list is Empty\n";
 	}
 	return data[howmany-1];
 }
@@ -120,18 +120,25 @@ void List<T>::deleteAll(T value)
 			}
 			*/
 		}
-		
+
 	}
 }
-template<class T>
+/*
+template <class T>
+bool List<T>::operator == (const List<T>& operand) const
+{
+	return (this->data == operand.data);
+}
+*/
+template <class T>
 bool List<T>::operator ==(const List<T>& operand) const
 {
 	//bool idential = false;
-	if(this->getSize() == operand.getSize())
+	if(this->size == operand.size)
 	{
-		if(this->getMany() == operand.getMany())
+		if(this->howmany == operand.howmany)
 		{
-			for(int i = 0; i < this->getSize(); i++)
+			for(int i = 0; i < size; i++)
 			{
 				if(data[i] != operand.data[i])
 				{
@@ -150,6 +157,8 @@ bool List<T>::operator ==(const List<T>& operand) const
 	}
 	return true;
 } 
+
+
 /*
 template<class T>
 ostream& operator << (ostream& out, const List<T>& robject)

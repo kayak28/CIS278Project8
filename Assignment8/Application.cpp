@@ -9,7 +9,7 @@ int main()
 	int listSize; 
 	int value; 
 	int counter = 0;
-	string fileName = "char" + ".txt";
+	//string fileName = "char" + ".txt";
 	cout << "enter the list size\n";
 	cin >> listSize;
 	List<int> list(listSize);
@@ -22,19 +22,21 @@ int main()
 		cout << "enter value\n";
 		cin >> value;
 		list.insert(value);
-		//list2.insert(value);
+		list2.insert(value + 1);
 		counter++;
 		
 	}
 	list.display(cout);
 	cout << "\n";
+	list2.display(cout);
+	cout << "\n";
 	cout << "occurs = " << list.occurs(3);
 	//list.deleteAll(3);
-	list.display(cout);
-	cout << "\n";
-	/*
-	bool indentical = list == list2;
-	if(indentical)
+	
+
+	//bool indentical = (list == list2);
+	//cout << indentical << "\n";
+	if(list == list2)
 	{
 		cout << "both are the same\n";
 	}
@@ -42,7 +44,7 @@ int main()
 	{
 		cout << "both are NOT the same\n";
 	}
-	*/
+	
 
 
 
