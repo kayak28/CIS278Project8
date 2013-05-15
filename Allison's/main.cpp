@@ -27,6 +27,7 @@ int main()
 
 	cout << "Read values from a file. please input the file name\n";
 	cin >> fileName;
+	
 	instream.open(fileName.c_str());
 
 	if(!instream)

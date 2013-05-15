@@ -98,28 +98,24 @@ template<class T>
 void List<T>::deleteAll(T value)
 {
 	//int *placeholder = new int[size];
-	//int counter = 0;
+	int i = 0;
 	cout << "in delete\n";
-	for(int i = 0; i < howmany; i++)
+	while(i < howmany)
 	{	
-		cout << "in for \n";
+		cout << "data[" << i << "] = " << data[i];
 		if(data[i] == value)
 		{
-
-			//placeholder[counter] = i;
-			//counter++;
-			/*
-			//data[i] = data[i + 1];
-			cout << "in if\n";
-			*/
 			for(int j = i; j < howmany-1; j++)
 			{
-				//cout << "into foor\n";
+				cout << "howmany = " << howmany << "\n";
 				data[j] = data[j+1];
-				//cout << "after deleting\n";
-				howmany--;
+				//cout << "";
 			}
-			
+			howmany--;
+		}
+		else
+		{
+			i++;	
 		}
 
 	}
@@ -189,7 +185,7 @@ void List<T>::display(ostream& out) const
 template <class T>
 void List<T>::appendFile(ostream& out) const
 {
-	for (int i = 0; i < size; ++i)
+	for (int i = 0; i < howmany; ++i)
 	{
 		out << this->data[i] << endl;
 	}
