@@ -28,11 +28,12 @@ int main()
 	}
 	list.display(cout);
 	cout << "\n";
-	list2.display(cout);
+	//list2.display(cout);
+	//cout << "\n";
+	cout << "occurs = " << list.occurs(3) << "\n";
+	list.deleteAll(3);
+	list.display(cout);
 	cout << "\n";
-	cout << "occurs = " << list.occurs(3);
-	//list.deleteAll(3);
-	
 
 	//bool indentical = (list == list2);
 	//cout << indentical << "\n";
