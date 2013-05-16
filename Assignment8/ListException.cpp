@@ -4,5 +4,9 @@
 using namespace std;
 ListException::ListException(string massage)
 {
-	cout << "Error:" << massage << "\n"; 
+	erorr = massage; 
+}
+ListException::getError()
+{
+	return erorr;
 }

@@ -1,6 +1,6 @@
 //List.h
 #include <iostream>
-
+#include "ListException.h"
 using namespace std;
 template <class T>
 class List
@@ -8,13 +8,13 @@ class List
 	public:
 		List();
 		List(int max);
-		int getSize();
-		int getMany();
-		bool isFull();
-		bool isEmpty();
+		int getSize()const;
+		int getMany()const;
+		bool isFull()const;
+		bool isEmpty() const;
 		void insert(T value);
 		T last() const;
-		int occurs(T value);
+		int occurs(T value)const;
 		void deleteAll(T value);
 		bool operator==(const List<T>& operand) const;
 	//	friend ostream& operator<< <>(ostream& out, const List<T>& robject);
@@ -42,22 +42,22 @@ List<T>::List(int max)
 	size = max;
 }
 template<class T>
-int List<T>::getSize()
+int List<T>::getSize()const
 {
 	return size;
 }
 template<class T>
-int List<T>::getMany()
+int List<T>::getMany() const
 {
 	return howmany;
 }
 template<class T>
-bool List<T>::isFull()
+bool List<T>::isFull() const
 {
 	return (howmany == size);
 }
 template<class T>
-bool List<T>::isEmpty()
+bool List<T>::isEmpty() const
 {
 	return (howmany == 0);
 }
@@ -66,7 +66,7 @@ void List<T>::insert(T value)
 {
 	if(isFull())
 	{
-		throw "listException: list is Full\n";
+		throw new ListException("listException: list is Full\n");
 	}
 	data[howmany] = value;
 	howmany++;
@@ -76,16 +76,16 @@ T List<T>::last() const
 {
 	if(isEmpty())
 	{
-		throw "List listException: list is Empty\n";
+		throw new ListException("List listException: list is Empty\n");
 	}
 	return data[howmany-1];
 }
 
 template<class T>
-int List<T>::occurs(T value)
+int List<T>::occurs(T value)const
 {
 	int occurence = 0;
-	for(int i = 0; i < size; i++)
+	for(int i = 0; i < howmany; i++)
 	{
 		if(data[i] == value)
 		{

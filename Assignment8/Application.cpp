@@ -3,37 +3,57 @@
 #include <iostream>
 using namespace std; 
 #include "List.h"
+#include "ListException.h"
 
 int main()
 {
 	int listSize; 
-	int value; 
+	int value = 0; 
 	int counter = 0;
-	//string fileName = "char" + ".txt";
+	string fileName;
+	cout << "Enter a file name\n";
+	cin >> fileName;
 	cout << "enter the list size\n";
 	cin >> listSize;
 	List<int> list(listSize);
 	List<int> list2(listSize); 
 	//ofstream outff(fileName);
-	ofstream outf("intList.txt", ios::app);//open file with append mode
+	ofstream outf(fileName.c_str(), ios::app);//open file with append mode
 
-	while(value != -1 && counter < list.getSize())
+	try
+	{	
+		while(value != -1)
+		{
+			cout << "enter value\n";
+			cin >> value;
+			list.insert(value);
+			list2.insert(value + 1);
+			counter++;
+		}
+		list.display(cout);
+		cout << "\n";
+		//list2.display(cout);
+		//cout << "\n";
+		cout << "occurs = " << list.occurs(3) << "\n";
+		list.deleteAll(3);
+		list.display(cout);
+		cout << "\n";
+	}	
+	catch(ListException ex)
 	{
-		cout << "enter value\n";
-		cin >> value;
-		list.insert(value);
-		list2.insert(value + 1);
-		counter++;
-		
+		cout << ex.getError();
 	}
-	list.display(cout);
-	cout << "\n";
-	//list2.display(cout);
-	//cout << "\n";
-	cout << "occurs = " << list.occurs(3) << "\n";
-	list.deleteAll(3);
-	list.display(cout);
-	cout << "\n";
+
+	try
+	{
+		int last = list.last();
+		cout << "last value = " << last << "\n"; 
+	}
+	catch(ListException e)
+	{
+		cout << e.getError();
+		cout << "\n";
+	}
 
 	//bool indentical = (list == list2);
 	//cout << indentical << "\n";
@@ -71,7 +91,7 @@ int main()
 		*/
 	}
 	//Read all data in the file
-	ifstream inf("intList.txt");
+	ifstream inf(fileName.c_str());
 	if(!inf)
 	{
 		cerr << "can not access to file successfully\n";
