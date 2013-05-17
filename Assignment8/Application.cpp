@@ -74,10 +74,8 @@ int main()
 		}
 		else if(action == 5)
 		{
-			int last;
-			last = list.last();
-			cout << "the last = " << last; 
-			//list.display(cout);
+
+			list.display(cout);
 		}
 		else if(action == 6)
 		{
