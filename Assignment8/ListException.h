@@ -4,11 +4,11 @@
 using namespace std;
 class ListException
 {
-public:
-	ListException(string massage);
-	ListException();
-	string getError();
-	//~ListException();
-private: 
-	string error;
+	public:
+		ListException(string massage);
+		ListException();
+		string getError();
+		//~ListException();
+	private: 
+		string error;
 };

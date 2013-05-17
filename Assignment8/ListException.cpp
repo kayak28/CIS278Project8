@@ -1,12 +1,19 @@
 //ListException.cpp
-#include "ListException.h"
+
 #include <iostream>
+#include <string>
+
 using namespace std;
+#include "ListException.h"
 ListException::ListException(string massage)
 {
-	erorr = massage; 
+	error = massage; 
 }
-ListException::getError()
+ListException::ListException()
 {
-	return erorr;
+	error = "Error!!!";
+}
+string ListException::getError()
+{
+	return error;
 }

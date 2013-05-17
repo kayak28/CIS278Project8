@@ -66,7 +66,8 @@ void List<T>::insert(T value)
 {
 	if(isFull())
 	{
-		throw new ListException("listException: list is Full\n");
+		//cout << "Exception\n\n";
+		throw ListException("listException: list is Full\n");
 	}
 	data[howmany] = value;
 	howmany++;
