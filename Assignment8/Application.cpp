@@ -40,8 +40,9 @@ int main()
 		{
 			try
 			{
-				cout << "enter value\n";
-				cin >> value;
+				int data;
+				cout << "enter value if data is integer\n";
+				cin >> data;
 				list.insert(value);
 
 			}catch(ListException ex)
@@ -52,7 +53,9 @@ int main()
 		else if(action == 2)
 		{
 			int target = 0;
-			cout << "enter the value you want to delete\n";
+			cout << "delete All data if type is integer\n";
+			cout << "otherwise, please type data derectly\n";
+			cin >> target;
 			list.deleteAll(target);
 			list.display(cout);
 
@@ -79,7 +82,7 @@ int main()
 		}
 		else if(action == 6)
 		{
-				//Read all data in the file
+			//Read all data in the file
 			ifstream inf(fileName.c_str());
 			if(!inf)
 			{
@@ -96,7 +99,7 @@ int main()
 			}
 		}
 		else if(action == 7)
-		{
+		{//save the data
 			//Insert all data in the current array into file named intList.txt				if(!outf)
 			if(!outf)
 			{
@@ -109,7 +112,7 @@ int main()
 			}
 		}
 		else if(action == 8)
-		{
+		{//show the last list
 			try
 			{
 				int last = list.last();
@@ -138,8 +141,7 @@ int main()
 
 
 
-	cout << "create an istance\n";
-	
+
 	 
 
 	return 0;
