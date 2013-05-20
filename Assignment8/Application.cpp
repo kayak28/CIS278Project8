@@ -33,7 +33,7 @@ int main()
 		cout << "6: read data from file\n";
 		cout << "7: save data in your list\n";
 		cout << "8: show the last list\n";
-		cout << "10: Good by!\n";
+		cout << "9: Good by!\n";
 		cin >> action;
 		
 		if(action == 1)
@@ -124,7 +124,7 @@ int main()
 				cout << "\n";
 			}
 		}
-		else if(action == 10)			
+		else if(action == 9)			
 		{
 			cout << "Programed by Kaya Ota\n";
 		}
@@ -134,7 +134,7 @@ int main()
 		}
 		
 
-	}while(action != 10);
+	}while(action != 9);
 	
 		
 
